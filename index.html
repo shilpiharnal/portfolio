@@ -1,0 +1,1373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Shilpi Harnal - Standalone Interactive Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-color: #1a365d;
+            --secondary-color: #2b6cb0;
+            --text-dark: #2d3748;
+            --text-light: #718096;
+            --bg-light: #f7fafc;
+            --border-color: #e2e8f0;
+            --white: #ffffff;
+            --transition-speed: 0.3s;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8;
+            color: var(--text-dark);
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            padding: 40px;
+        }
+
+        header {
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 30px;
+            margin-bottom: 30px;
+        }
+
+        .header-title {
+            color: var--primary-color;
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .header-subtitle {
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .header-tagline {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 15px;
+            font-size: 0.9rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-dark);
+        }
+
+        .contact-item i {
+            color: var(--secondary-color);
+            width: 16px;
+        }
+
+        .contact-item a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .contact-item a:hover { text-decoration: underline; }
+
+        .accordion-item {
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            background-color: var(--white);
+        }
+
+        .accordion-header {
+            width: 100%;
+            background-color: var(--bg-light);
+            padding: 18px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            text-align: left;
+            transition: background-color var(--transition-speed);
+        }
+
+        .accordion-header:hover { background-color: #edf2f7; }
+
+        .accordion-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .accordion-title i { color: var(--secondary-color); }
+
+        .accordion-icon {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            transition: transform var(--transition-speed);
+        }
+
+        .accordion-item.active .accordion-icon { transform: rotate(180deg); }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height var(--transition-speed) ease-out;
+            border-top: 1px solid transparent;
+        }
+
+        .accordion-item.active .accordion-content {
+            border-top-color: var(--border-color);
+        }
+
+        .inner-content {
+            padding: 24px;
+            font-size: 0.95rem;
+            color: var(--text-dark);
+        }
+
+        p { margin-bottom: 12px; }
+
+        ul {
+            margin-left: 22px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+
+        .sub-section-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--secondary-color);
+            margin: 25px 0 12px 0;
+            border-bottom: 1px dashed var(--border-color);
+            padding-bottom: 6px;
+        }
+
+        .sub-section-title:first-of-type { margin-top: 0; }
+
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            margin: 15px 0;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+            vertical-align: top;
+        }
+
+        th {
+            background-color: var(--bg-light);
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        tr:last-child td { border-bottom: none; }
+
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        a {
+            color: var(--secondary-color);
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1 class="header-title">Dr. Shilpi Harnal</h1>
+        <div class="header-subtitle">B.Tech. (CSE), M.Tech. (CSE), Ph.D. (CS)</div>
+        <div class="header-tagline">IEEE Computer Society Member - 92045901 | Subclass 189 Permanent Resident | WWCC Completed</div>
+
+        <div class="contact-grid">
+            <div class="contact-item"><i class="fa-solid fa-envelope"></i><span>shilpi13n@gmail.com</span></div>
+            <div class="contact-item"><i class="fa-brands fa-linkedin"></i><a href="https://www.linkedin.com/in/shilpiharnal" target="_blank">linkedin.com/in/shilpiharnal</a></div>
+            <div class="contact-item"><i class="fa-solid fa-chart-line"></i><a href="https://www.scopus.com/authid/detail.uri?authorId=57190854815" target="_blank">Scopus Profile</a></div>
+            <div class="contact-item"><i class="fa-solid fa-graduation-cap"></i><a href="https://scholar.google.com/citations?user=JGy-OJYAAAAJ" target="_blank">Google Scholar</a></div>
+            <div class="contact-item"><i class="fa-solid fa-flask"></i><span>Web of Science: JVM-8172-2024</span></div>
+            <div class="contact-item"><i class="fa-brands fa-github"></i><a href="https://www.github.com/shilpiharnal" target="_blank">github.com/shilpiharnal</a></div>
+            <div class="contact-item"><i class="fa-brands fa-youtube"></i><a href="https://www.youtube.com/c/TechiePetals" target="_blank">YouTube: Techie Petals</a></div>
+        </div>
+    </header>
+
+    <main>
+        <!-- SUMMARY -->
+        <div class="accordion-item active">
+            <button class="accordion-header">
+                <span class="accordion-title"><i class="fa-solid fa-address-card"></i>Professional Summary</span>
+                <i class="fa-solid fa-chevron-down accordion-icon"></i>
+            </button>
+	
+            <div class="accordion-content">
+                <div class="inner-content">
+<div class="inner-content">
+                    <p><strong>Total Publications: 66 | Scopus Indexed: 53 | SCI: 9 | SCIE: 2 | Citations: 1093 | H-index: 15</strong></p>
+	</div>
+                    <p>Accomplished Associate Professor, Ph.D. Coordinator, and Head of Academic Delivery with over 15 years of higher education leadership steering high-impact technical research and specialized curriculum engineering. Deep architectural expertise spans the modern computing stack, seamlessly integrating cloud-edge infrastructures (AWS, Serverless, Fog Computing) with intelligent systems like Federated Learning, Generative AI, and deep CNNs to address complex challenges in Smart Cities and Autonomous Agriculture. A highly productive scholar with over 50 peer-reviewed international publications (H-index: 15, 1,000+ citations), offering a proven track record of managing academic specialization programs, directing curriculum development for Boards of Studies, and translating advanced distributed computing theories into secure, real-world engineering solutions. </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- QUALIFICATIONS -->
+         <div class="accordion-item active">
+            <button class="accordion-header">
+                <span class="accordion-title"><i class="fa-solid fa-user-graduate"></i>Academic & Professional Qualifications</span>
+                <i class="fa-solid fa-chevron-down accordion-icon"></i>
+            </button>
+            <div class="accordion-content">
+                <div class="inner-content">
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Degree / Qualification</th>
+                                    <th>University / Board / Institution</th>
+                                    <th>Year / Status</th>
+                                    <th>Percentage / Mode</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Ph.D. (Computer Science)</strong></td>
+                                    <td>Dept. of Computer Science & Applications, Kurukshetra University</td>
+                                    <td>Awarded 24/06/2020</td>
+                                    <td>Part-time (regular coursework – 6 months)</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>M.Tech (Computer Science & Engineering)</strong></td>
+                                    <td>Kurukshetra University, Kurukshetra</td>
+                                    <td>2010 – 2012</td>
+                                    <td>80.8% | First Division | Regular</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>B.Tech (Computer Engineering)</strong></td>
+                                    <td>H.E.C, Jagadhri, Kurukshetra University</td>
+                                    <td>2005 – 2008</td>
+                                    <td>80.5% (Honours) | First Division | Regular</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Diploma (Information Technology)</strong></td>
+                                    <td>Seth Jai Parkash Polytechnic, Damla, SBTE Haryana</td>
+                                    <td>2002 – 2005</td>
+                                    <td>76.7% | First Division | Regular</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Class X</strong></td>
+                                    <td>Board of School Education Haryana</td>
+                                    <td>2001 – 2002</td>
+                                    <td>78.5% | Merit | Regular</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="sub-section-title">Key Academic Milestones</div>
+                    <ul>
+                        <li>GATE-2012 Exam qualified with 95.74 percentile. </li>
+                        <li>M.Tech Dissertation: “Single sign-on authentication model for Cloud Computing using Kerberos”. </li>
+                        <li>Ph.D. Thesis: “Security and Access Control Oriented Model for Multimedia Cloud Computing”. </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- EXPERIENCE -->
+         <div class="accordion-item active">
+            <button class="accordion-header">
+                <span class="accordion-title"><i class="fa-solid fa-briefcase"></i>Professional Experience & Academic Governance</span>
+                <i class="fa-solid fa-chevron-down accordion-icon"></i>
+            </button>
+            <div class="accordion-content">
+                <div class="inner-content">
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Institute</th>
+                                    <th>Designation</th>
+                                    <th>Duration</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>University Institute of Engineering, Chandigarh University, Mohali</td><td>Associate Professor, Ph.D. Coordinator</td><td>07/09/2024 – 12/06/2026</td></tr>
+                                <tr><td>Chitkara University Institute of Engineering and Technology, Punjab</td><td>Assistant Professor, Head Academic Delivery (CSE 3rd Year)</td><td>28/01/2021 – 06/09/2024</td></tr>
+                                <tr><td>Seth Jai Parkash Mukand Lal Institute of Engineering & Technology (JMIT), Radaur</td><td>Assistant Professor</td><td>14/08/2013 – 27/01/2021</td></tr>
+                                <tr><td>D.C.S.A, Kurukshetra University</td><td>Research Scholar (Ph.D. coursework)</td><td>04/02/2013 – 12/08/2013</td></tr>
+                                <tr><td>SafeXplore, Yamunanagar (Dept. of R&D)</td><td>Research Associate</td><td>01/05/2012 – 31/01/2013</td></tr>
+                                <tr><td>Ganpati Institute of Technology & Management, Yamunanagar</td><td>Lecturer</td><td>18/02/2010 – 20/08/2010</td></tr>
+                                <tr><td>Yamuna Polytechnic for Engineering, Gadholi, Yamunanagar</td><td>Lecturer</td><td>07/08/2009 – 23/02/2010</td></tr>
+                                <tr><td>Shri Balaji Polytechnic, Radaur, Yamunanagar</td><td>Lecturer</td><td>01/07/2008 – 30/06/2009</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="sub-section-title">Core Administrative & Governance Roles</div>
+                    <ul>
+                        <li>Ph.D. Coordinator, M.Tech Supervisor, Master Subject Coordinator and Academic Outreach facilitator (Dept. of CSE, Chandigarh University). </li>
+                        <li>Head Academic Delivery and Program In‑Charge, CSE 3rd Year (CUIET, Chitkara University). </li>
+                        <li>Time-table in‑charge, sessional committee member, website updating, placement coordinator, industry and PR visits (JMIT, Radaur). </li>
+                        <li>Publication and NAAC/NBA documentation responsibilities. </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- PhD SUPERVISION -->
+         <div class="accordion-item">
+            <button class="accordion-header">
+                <span class="accordion-title"><i class="fa-solid fa-users-gear"></i>Ph.D. Research Supervision</span>
+                <i class="fa-solid fa-chevron-down accordion-icon"></i>
+            </button>
+            <div class="accordion-content">
+                <div class="inner-content">
+                    <p><strong>Ph.D. guided: 2 awarded + 2 currently guiding</strong> </p>
+                    <ul>
+                        <li>Anand Muni Mishra – “Weed Species Identification and Detection in Crops using Deep Learning Technique”, awarded 09/11/2022, Chitkara University, Punjab. </li>
+                        <li>Prabhjot Kaur – “Characterization and Recognition of Stress in Plant Leaf Using Deep Learning”, awarded 21/02/2023, Chitkara University, Punjab. </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- JOURNALS -->
+         <div class="accordion-item">
+            <button class="accordion-header">
+                <span class="accordion-title"><i class="fa-solid fa-newspaper"></i>International Journals (22)</span>
+                <i class="fa-solid fa-chevron-down accordion-icon"></i>
+            </button>
+            <div class="accordion-content">
+                <div class="inner-content">
+                    <p><strong>Total Publications: 66 | Scopus Indexed: 53 | SCI: 9 | SCIE: 2 | Citations: 1093 | H-index: 15</strong></p>
+			<ul>
+    <li>
+        Bharti, S., Gill, R., Harnal, S., & Bharany, S. (2026). Emerging paradigms in distributed computing: 
+        A systematic review of serverless edge technologies. <em>Recent Patents on Engineering</em>, 20(1), 1–16. Bentham Science. 
+        <a href="https://doi.org/10.2174/0118722121424408251204210812" target="_blank">https://doi.org/10.2174/0118722121424408251204210812</a>
+        <small style="color: #555; display: block; margin-top: 2px;">Published: 31 March, 2026 | Indexing: Scopus (H-index: 21, Quartile: Q3) | ISSN: 2212-4047</small>
+    </li>
+
+    <li>
+        Kumar, S., Samriya, J. K., Tiwari, R., Kumar, M., Harnal, S., Kumar, N., & Guizani, M. (2026). 
+        A Dynamic PAPR Reduction Method Using PTS-ESSA for MIMO Generalized FDM Wireless System. 
+        <em>IEEE Transactions on Network and Service Management</em>, 23, 1162–1175. 
+        <a href="https://doi.org/10.1109/TNSM.2025.3619945" target="_blank">https://doi.org/10.1109/TNSM.2025.3619945</a>
+        <small style="color: #555; display: block; margin-top: 2px;">Published: 30 December, 2025 | Indexing: <strong>SCIE</strong> (IF: 5.4, H-index: 85, Quartile: Q1) | ISSN: 1932-4537</small>
+    </li>
+
+    <li>
+        Singh, Y., Aulakh, N.S., Aulakh, I.K., Bhattacharjee, S.B., Kumari, S., Rani, S., Sharma, G., 
+        Khurana, S., Harnal, S., & Goyal, N. (2024). MRNQ: Machine learning-based reliable node quester 
+        for reliable communication in underwater acoustic sensor networks. 
+        <em>Peer-to-Peer Networking and Applications</em>, 1–15. Springer. 
+        <a href="https://doi.org/10.1007/s12083-024-01772-1" target="_blank">https://doi.org/10.1007/s12083-024-01772-1</a>
+        <small style="color: #555; display: block; margin-top: 2px;">Published: 29 August, 2024 | Indexing: <strong>SCIE</strong> (IF: 3.3, H-index: 48, Quartile: Q2) | ISSN: 1936-6450</small>
+    </li>
+
+    <li>
+        Harnal, S., Sharma, G., Anupriya, Mishra, A. M., Bagga, D., Saini, N., Goley, P. K., & Anupam, K. (2023). 
+        Bibliometric mapping of theme and trends of augmented reality in the field of education. 
+        <em>Journal of Computer Assisted Learning</em>, 1–24. Wiley Online Library. 
+        <a href="https://doi.org/10.1111/jcal.12899" target="_blank">https://doi.org/10.1111/jcal.12899</a>
+        <small style="color: #555; display: block; margin-top: 2px;">Published: 09 December, 2023 | Indexing: <strong>SCI</strong> (IF: 3.761, H-index: 114, Quartile: Q1) | ISSN: 1365-2729</small>
+    </li>
+
+    <li>
+        Kaur, P., Harnal, S., Gautam, V., Singh, M. P., & Singh, S. P. (2023). Performance analysis of segmentation 
+        models to detect leaf diseases in tomato plant. <em>Multimedia Tools and Applications</em>, 1–25. Springer. 
+        <a href="https://doi.org/10.1007/s11042-023-16238-4" target="_blank">https://doi.org/10.1007/s11042-023-16238-4</a>
+        <small style="color: #555; display: block; margin-top: 2px;">Published: 12 July, 2023 | Indexing: <strong>SCI</strong> (IF: 3.6, H-index: 106, Quartile: Q1) | ISSN: 1573-7721</small>
+    </li>
+
+    <li>
+        Kaur, P., Harnal, S., Gautam, V., Singh, M. P., & Singh, S. P. (2023). Hybrid deep learning model for multi 
+        biotic lesions detection in <em>Solanum lycopersicum</em> leaves. <em>Multimedia Tools and Applications</em>, 1–25. Springer. 
+        <a href="https://doi.org/10.1007/s11042-023-15940-7" target="_blank">https://doi.org/10.1007/s11042-023-15940-7</a>
+        <small style="color: #555; display: block; margin-top: 2px;">Published: 12 June, 2023 | Indexing: <strong>SCI</strong> (IF: 3.6, H-index: 93, Quartile: Q1) | ISSN: 1573-7721</small>
+    </li>
+
+    <li>
+        Kaur, P., Harnal, S., Gautam, V., Singh, M. P., & Singh, S. P. (2022). A novel transfer deep learning method for 
+        detection and classification of plant leaf disease. <em>Journal of Ambient Intelligence and Humanized Computing</em>, 1–18. Springer. 
+        <a href="https://doi.org/10.1007/s12652-022-04331-9" target="_blank">https://doi.org/10.1007/s12652-022-04331-9</a>
+        <small style="color: #555; display: block; margin-top: 2px;">Published: 02 August, 2022 | Indexing: <strong>SCI</strong> (IF: 6.163, H-index: 72, Quartile: Q1) | ISSN: 1868-5145</small>
+    </li>
+
+    <li>
+        Kaur, P., Harnal, S., Gautam, V., Singh, M. P., & Singh, S. P. (2022). An approach for characterization of infected 
+        area in tomato leaf disease based on deep learning and object detection technique. 
+        <em>Engineering Applications of Artificial Intelligence</em>, 115, 105210. Elsevier. 
+        <a href="https://doi.org/10.1016/j.engappai.2022.105210" target="_blank">https://doi.org/10.1016/j.engappai.2022.105210</a>
+        <small style="color: #555; display: block; margin-top: 2px;">Published: 23 July, 2023 | Indexing: <strong>SCI</strong> (IF: 7.8, H-index: 137, Quartile: Q1) | ISSN: 1873-6769</small>
+    </li>
+
+    <li>
+        Harnal, S., Sharma, G., et al. (2022). Bibliometric Mapping of Trends, Applications and Challenges of Artificial 
+        Intelligence in Smart Cities. <em>EAI Endorsed Transactions on Scalable Information Systems</em>, e76-e76. The European Alliance for Innovation. 
+        <a href="https://doi.org/10.4108/eetsis.vi.489" target="_blank">https://doi.org/10.4108/eetsis.vi.489</a>
+        <small style="color: #555; display: block; margin-top: 2px;">Published: 28 June, 2023 | Indexing: Scopus (IF: 1.3, H-index: 15, Quartile: Q3) | ISSN: 2032-9407</small>
+    </li>
+
+    <li>
+        Sharma, G., Khurana, S., Harnal, S., & Lone, S. A. (2022). CSFPA: An intelligent hybrid workflow scheduling algorithm 
+        based upon global and local optimization approach in cloud. <em>Concurrency and Computation: Practice and Experience</em>, e7176. Wiley Online Library. 
+        <a href="https://doi.org/10.1002/cpe.7176" target="_blank">https://doi.org/10.1002/cpe.7176</a>
+        <small style="color: #555; display: block; margin-top: 2px;">Published: 13 July, 2022 | Indexing: <strong>SCI</strong> (IF: 1.831, H-index: 80, Quartile: Q2) | ISSN: 1532-0626</small>
+    </li>
+
+    <li>
+        Mishra, A. M., Harnal, S., Gautam, V., Tiwari, R., & Upadhyay, S. (2022). Weed density estimation in soya bean crop using 
+        deep convolutional neural networks in smart agriculture. <em>Journal of Plant Diseases and Protection</em>, 1-12. Springer. 
+        <a href="https://doi.org/10.1007/s41348-022-00595-7" target="_blank">https://doi.org/10.1007/s41348-022-00595-7</a>
+        <small style="color: #555; display: block; margin-top: 2px;">Published: 26 March, 2022 | Indexing: <strong>SCI</strong> (IF: 4.5, H-index: 36, Quartile: Q2) | ISSN: 1861-3837</small>
+    </li>
+
+    <li>
+        Kaur, P., Harnal, S., et al. (2022). Recognition of Leaf Disease Using Hybrid Convolutional Neural Network by Applying 
+        Feature Reduction. <em>Sensors</em>, 22(2), 575. MDPI. 
+        <a href="https://doi.org/10.3390/s22020575" target="_blank">https://doi.org/10.3390/s22020575</a>
+        <small style="color: #555; display: block; margin-top: 2px;">Published: 12 January, 2022 | Indexing: <strong>SCI</strong> (IF: 3.9, H-index: 245, Quartile: Q1) | ISSN: 1424-8220</small>
+    </li>
+
+    <li>
+        Kaur, P., Harnal, S., et al. (2021). A Hybrid Convolutional Neural Network Model for Diagnosis of COVID‑19 Using Chest 
+        X‑ray Images. <em>International Journal of Environmental Research and Public Health</em>, 18(22), 12191. MDPI. 
+        <a href="https://doi.org/10.3390/ijerph182212191" target="_blank">https://doi.org/10.3390/ijerph182212191</a>
+        <small style="color: #555; display: block; margin-top: 2px;">Published: 20 November, 2021 | Indexing: <strong>SCI</strong> (IF: 4.6, H-index: 113) | ISSN: 1660-4601</small>
+    </li>
+
+    <li>
+        Mishra, A. M., Harnal, S., et al. (2021). A Deep Learning‑Based Novel Approach for Weed Growth Estimation. 
+        <em>Intelligent Automation & Soft Computing</em>, 31(2), 1157–1173. Tech Science Press. 
+        <a href="https://doi.org/10.32604/iasc.2022.020174" target="_blank">https://doi.org/10.32604/iasc.2022.020174</a>
+        <small style="color: #555; display: block; margin-top: 2px;">Published: 22 September, 2021 | Indexing: <strong>SCI</strong> (IF: 3.4, H-index: 35, Quartile: Q3) | ISSN: 2326-005X</small>
+    </li>
+
+    <li>
+        Sharma, G., Harnal, S., Miglani, N., & Khurana, S. (2020). Reliability of cluster head node based upon parametric constraints 
+        in underwater acoustic sensor networks. <em>Underwater Technology</em>, 37(2). Ingenta Connect. 
+        <a href="https://doi.org/10.3723/ut.37.039" target="_blank">https://doi.org/10.3723/ut.37.039</a>
+        <small style="color: #555; display: block; margin-top: 2px;">Published: 01 July, 2020 | Indexing: Scopus (IF: 0.47, H-index: 22) | ISSN: 1756-0543</small>
+    </li>
+
+    <li>
+        Harnal, S., & Chauhan, R. K. (2020). Towards Secure, Flexible and Efficient Role Based Hospital’s Cloud Management System: 
+        Case Study. <em>EAI Endorsed Transactions on Pervasive Health and Technology</em>, 6(23). 
+        <a href="http://doi.org/10.4108/eai.13-7-2018.165497" target="_blank">http://doi.org/10.4108/eai.13-7-2018.165497</a>
+        <small style="color: #555; display: block; margin-top: 2px;">Indexing: Scopus (IF: 2.85, H-index: 13, Quartile: Q2)</small>
+    </li>
+
+    <li>
+        Harnal, S., & Chauhan, R. K. (2020). Efficient and Flexible Role‑Based Access Control (EF‑RBAC) Mechanism for Cloud. 
+        <em>EAI Endorsed Transactions on Scalable Information Systems</em>, 7(26). 
+        <a href="http://doi.org/10.4108/eai.13-7-2018.161438" target="_blank">http://doi.org/10.4108/eai.13-7-2018.161438</a>
+        <small style="color: #555; display: block; margin-top: 2px;">Indexing: Web of Science, Scopus (IF: 1.3, H-index: 6, Quartile: Q2)</small>
+    </li>
+
+    <li>
+        Harnal, S., & Chauhan, R. K. (2019). Hybrid Cryptography based E2EE for Integrity & Confidentiality in Multimedia Cloud Computing. 
+        <em>International Journal of Innovative Technology and Exploring Engineering</em>, 8(10), 918–924. 
+        <a href="https://doi.org/10.35940/ijitee.J9001.0881019" target="_blank">https://doi.org/10.35940/ijitee.J9001.0881019</a>
+        <small style="color: #555; display: block; margin-top: 2px;">Indexing: Scopus (IF: 1.0, H-index: 47, Quartile: Q4)</small>
+    </li>
+
+    <li>
+        Harnal, S., & Chauhan, R. K. (2017). Hybrid Cryptography to Maintain Integrity of Data in Multimedia Cloud Environment. 
+        <em>International Journal of Emerging Technology and Advanced Engineering (IJETAE)</em>, 7(9), 669–675.
+    </li>
+
+    <li>
+        Harnal, S., & Chauhan, R. K. (2016). Issues & Perspectives with Multimedia Cloud Computing. 
+        <em>International Journal of Advanced Research in Computer Science and Software Engineering (IJARCSSE)</em>, 6(11), 174–180.
+    </li>
+
+    <li>
+        Harnal, S., & Bagga, D. (2013). Cloud Computing: An Overview. <em>International Journal</em>, 3(7).
+    </li>
+
+    <li>
+        Bagga, D., Singh, S., & Harnal, S. (2013). Enhanced Dynamic Web Caching: For Scalability & Metadata Management. 
+        <em>International Journal</em>, 3(6).
+    </li>
+</ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- CONFERENCES -->
+         <div class="accordion-item">
+            <button class="accordion-header">
+                <span class="accordion-title"><i class="fa-solid fa-microphone-lines"></i>Conference Papers (30)</span>
+                <i class="fa-solid fa-chevron-down accordion-icon"></i>
+            </button>
+            <div class="accordion-content">
+                <div class="inner-content">
+<ul>
+    <li>
+        Harnal, S., & Kaur, K. (2026). Artificial Intelligence for hand gesture to speech conversion.
+        In <em>Smart Technologies and Intelligent Computing</em> (pp. 51–57). CRC Press.
+        <a href="https://doi.org/10.1201/9781003666929" target="_blank">https://doi.org/10.1201/9781003666929</a>
+        <small style="color: #555; display: block; margin-top: 2px;">Indexing: Scopus</small>
+    </li>
+    <li>
+        Singh, C., & Harnal, S. (2026). Evaluating feature importance in AI‑driven crop water stress models.
+        In <em>Smart Technologies and Intelligent Computing</em> (pp. 167–173). CRC Press.
+        <a href="https://doi.org/10.1201/9781003666929" target="_blank">https://doi.org/10.1201/9781003666929</a>
+        <small style="color: #555; display: block; margin-top: 2px;">Indexing: Scopus</small>
+    </li>
+    <li>
+        Farooq, R., Harnal, S., & Sammi, H. (2026). Heterogeneous ensemble learning for stress detection from social media text: Combining transformers, recurrent networks, and convolutional architecture.
+        <em>2026 IEEE International Conference for Convergence in Computing Technology (I3CTCON)</em>, 1–5.
+        <a href="https://doi.org/10.1109/I3CTCON68242.2026.11507209" target="_blank">https://doi.org/10.1109/I3CTCON68242.2026.11507209</a>
+        <small style="color: #555; display: block; margin-top: 2px;">Published: May 2026 | Indexing: Scopus</small>
+    </li>
+    <li>
+        Muskaan, Singh, C., Harnal, S., & Tensingh, S. (2026). CRISPR: A computational framework for personalized type 2 diabetes prevention using GWAS-based polygenic risk.
+        In <em>2026 World Conference on Computational Science and Technology (WcCST)</em> (pp. 997–1002). IEEE.
+        <a href="https://doi.org/10.1109/WcCST67302.2026.11495960" target="_blank">https://doi.org/10.1109/WcCST67302.2026.11495960</a>
+        <small style="color: #555; display: block; margin-top: 2px;">Published: 26–27 March, 2026 | Indexing: Scopus</small>
+    </li>
+    <li>
+        Kunal, Harnal, S., Kaur, K., & Mukthar, A. S. (2026). Multi-modal fusion of facial dynamics and eye gaze patterns for major depressive disorder classification. 
+        In <em>2026 World Conference on Computational Science and Technology (WcCST)</em> (pp. 849–854). IEEE.
+        <a href="https://doi.org/10.1109/WcCST67302.2026.11495947" target="_blank">https://doi.org/10.1109/WcCST67302.2026.11495947</a>
+        <small style="color: #555; display: block; margin-top: 2px;">Published: 26–27 March, 2026 | Indexing: Scopus</small>
+    </li>
+    <li>
+        Bharti, S., Gill, R., & Harnal, S. (2026). Intelligent Task Offloading in Serverless Edge Environments: Approaches, Challenges, and Platform Suitability.
+        In <em>2026 1st International Conference on Advancing Sustainable Solutions through Technologies (ICASST)</em> (pp. 1-6). IEEE.
+        <a href="https://doi.org/10.1109/ICASST68917.2026.11484463" target="_blank">https://doi.org/10.1109/ICASST68917.2026.11484463</a>
+        <small style="color: #555; display: block; margin-top: 2px;">Published: February 2026 | Indexing: Scopus</small>
+    </li>
+    <li>
+        Harnal, S., & Kaur, K. (2026). AI‑Based Multimodal Depression Detection Using CNN and Hybrid Deep Learning Architectures.
+        In <em>2026 5th International Conference on Innovative Practices in Technology and Management (ICIPTM)</em> (pp. 1-6). IEEE.
+        <a href="https://doi.org/10.1109/ICIPTM69057.2026.11465193" target="_blank">https://doi.org/10.1109/ICIPTM69057.2026.11465193</a>
+        <small style="color: #555; display: block; margin-top: 2px;">Published: February 2026 | Indexing: Scopus</small>
+    </li>
+    <li>
+        Rawat, P., & Harnal, S. (2026). Classification and Detection of Lung Cancer Using VGG‑DeepCNN with GRAD‑CAM Interpretability.
+        In <em>2026 IEEE International Conference on Interdisciplinary Approaches in Technology and Management for Social Innovation (IATMSI)</em> (Vol. 4, pp. 1-6). IEEE.
+        <a href="https://doi.org/10.1109/IATMSI68868.2026.11465627" target="_blank">https://doi.org/10.1109/IATMSI68868.2026.11465627</a>
+        <small style="color: #555; display: block; margin-top: 2px;">Published: March 2026 | Indexing: Scopus</small>
+    </li>
+    <li>
+        Muskaan, M., Singh, C., & Harnal, S. (2025). Machine Learning–Guided CRISPR Genome Editing for Personalized Diabetes Prevention: A Computational Review and Framework.
+        In <em>2025 2nd International Conference on Artificial Intelligence for Innovations in Healthcare Industries (ICAIIHI)</em> (pp. 1-6). IEEE.
+        <a href="https://doi.org/10.1109/ICAIIHI67124.2025.11403187" target="_blank">https://doi.org/10.1109/ICAIIHI67124.2025.11403187</a>
+        <small style="color: #555; display: block; margin-top: 2px;">Published: December 2025 | Indexing: Scopus</small>
+    </li>
+    <li>
+        Farooq, R., Chaudhary, R., Harnal, S., & Sammi, H. (2025). Deep Learning for Skin Cancer Detection: A CNN-Based Approach to Classifying Malignant and Benign Cancer.
+        In <em>2025 International Conference on Sustainability, Innovation & Technology (ICSIT)</em> (pp. 1-6). IEEE.
+        <a href="https://doi.org/10.1109/ICSIT65336.2025.11293910" target="_blank">https://doi.org/10.1109/ICSIT65336.2025.11293910</a>
+        <small style="color: #555; display: block; margin-top: 2px;">Published: August 2025 | Indexing: Scopus</small>
+    </li>
+    <li>
+        Bharti, S., Gill, R., & Harnal, S. (2025). Adaptive Task Offloading Framework for Serverless Edge Computing.
+        In <em>2025 3rd International Conference on Disruptive Technologies (ICDT)</em> (pp. 1039-1044). IEEE.
+        <a href="https://doi.org/10.1109/ICDT63985.2025.10986503" target="_blank">https://doi.org/10.1109/ICDT63985.2025.10986503</a>
+        <small style="color: #555; display: block; margin-top: 2px;">Published: March 2025 | Indexing: Scopus</small>
+    </li>
+    <li>
+        Harnal, S., Sharma, A., Malhotra, J., Sharma, S., & Grover, M. (2025). Predicting Maternal Health Risk Using Machine Learning Models and Comparing The Performance Of Percentage Split And K-Fold Cross Validation.
+        In <em>2025 1st International Conference on AIML-Applications for Engineering & Technology (ICAET)</em> (pp. 1-8). IEEE.
+        <a href="https://doi.org/10.1109/ICAET63349.2025.10932304" target="_blank">https://doi.org/10.1109/ICAET63349.2025.10932304</a>
+        <small style="color: #555; display: block; margin-top: 2px;">Published: January 2025 | Indexing: Scopus</small>
+    </li>
+    <li>
+        Kaur, H., Malik, S., Baggan, V., & Harnal, S. (2024). Enhanced K‑means Clustering of Tasks and Virtual Machines for Load Balancing in Fog Environment.
+        In <em>2024 13th International Conference on System Modeling & Advancement in Research Trends (SMART)</em> (pp. 565-570). IEEE.
+        <a href="https://doi.org/10.1109/SMART63812.2024.10882480" target="_blank">https://doi.org/10.1109/SMART63812.2024.10882480</a>
+        <small style="color: #555; display: block; margin-top: 2px;">Published: December 2024 | Status: Presented | Indexing: Scopus</small>
+    </li>
+    <li>
+        Bharti, S., Harnal, S., & Gill, R. (2025). Moving Beyond Serverless Edge Computing: Serverless Fog Computing for the Future IoT.
+        In <em>Recent Advances in Computing Sciences</em> (pp. 23-30). CRC Press.
+        <a href="https://doi.org/10.1201/9781003570349" target="_blank">https://doi.org/10.1201/9781003570349</a>
+        <small style="color: #555; display: block; margin-top: 2px;">Published: January 2025 | Indexing: Scopus</small>
+    </li>
+    <li>
+        Batra, D., Harnal, S., Sachdeva, P., Tiwari, R., Bali, R., & Upadhyay, S. (2024). Blockchain and Data Security: Building Trust in a Digital World.
+        In <em>Computational Intelligence and Mathematical Applications</em> (pp. 60-67). CRC Press.
+        <a href="https://doi.org/10.1201/9781003534112" target="_blank">https://doi.org/10.1201/9781003534112</a>
+        <small style="color: #555; display: block; margin-top: 2px;">Published: August 2024 | Indexing: Scopus</small>
+    </li>
+    <li>
+        Luthra, G., Kukkar, S., Harnal*, S., Tiwari, R., Upadhyay, S., & Chhabra, G. (2023). Water Quality Prediction Using Machine Learning.
+        In <em>International Conference on Soft Computing: Theories and Applications</em> (pp. 105-115). Singapore: Springer Nature Singapore.
+        <a href="https://doi.org/10.1007/978-981-97-2089-7_10" target="_blank">https://doi.org/10.1007/978-981-97-2089-7_10</a>
+        <small style="color: #555; display: block; margin-top: 2px;">Published: December 2023 | Indexing: Scopus</small>
+    </li>
+    <li>
+        Kumar, A., Ahlawat, D., & Harnal, S. (2023). Improved‑Hybrid GA‑Based Technique to Optimize the Resource Utilization in Cloud.
+        In <em>2023 6th International Conference on Contemporary Computing and Informatics (IC3I)</em> (Vol. 6, pp. 1128-1132). IEEE.
+        <a href="https://doi.org/10.1109/IC3I59117.2023.10397973" target="_blank">https://doi.org/10.1109/IC3I59117.2023.10397973</a>
+        <small style="color: #555; display: block; margin-top: 2px;">Published: September 2023 | Indexing: Scopus</small>
+    </li>
+    <li>
+        Baggan, V., Singh, S., Garg, S., *Harnal, S., Sethi, M., & Verma, J. (2023). Correlation of Industrialisation and Pesticides with Cancer in Indian States: The Data Analysis.
+        In <em>2023 7th International Conference On Computing, Communication, Control And Automation (ICCUBEA)</em> (pp. 1-6). IEEE.
+        <a href="https://doi.org/10.1109/ICCUBEA58933.2023.10391963" target="_blank">https://doi.org/10.1109/ICCUBEA58933.2023.10391963</a>
+        <small style="color: #555; display: block; margin-top: 2px;">Published: August 2023 | Status: Presented and corresponding | Indexing: Scopus</small>
+    </li>
+    <li>
+        Verma, J., Baggan, V., Kaur, I., Sethi, M., Snehi, M., & Harnal, S. (2023). Ethical Hacking through Foot Printing: A Machine Learning Strategy.
+        In <em>2023 7th International Conference On Computing, Communication, Control And Automation (ICCUBEA)</em> (pp. 1-5). IEEE.
+        <a href="https://doi.org/10.1109/ICCUBEA58933.2023.10392124" target="_blank">https://doi.org/10.1109/ICCUBEA58933.2023.10392124</a>
+        <small style="color: #555; display: block; margin-top: 2px;">Published: August 2023 | Status: Corresponding | Indexing: Scopus</small>
+    </li>
+    <li>
+        Harnal, S., Jain, A., Rathore, A. S., Baggan, V., Kaur, G., & Bala, R. (2023). Comparative Approach for Early Diabetes Detection with Machine Learning.
+        In <em>2023 International Conference on Emerging Smart Computing and Informatics (ESCI)</em> (pp. 1-6). IEEE.
+        <a href="https://doi.org/10.1109/ESCI56872.2023.10100186" target="_blank">https://doi.org/10.1109/ESCI56872.2023.10100186</a>
+        <small style="color: #555; display: block; margin-top: 2px;">Published: March 2023 | Indexing: Scopus</small>
+    </li>
+    <li>
+        Bala, R., Harnal, S., & Gupta, M. (2023). Teachers’ Perception about the Use of QR Code in Education.
+        In <em>2023 Somaiya International Conference on Technology and Information Management (SICTIM)</em> (pp. 34-38). IEEE.
+        <a href="https://doi.org/10.1109/SICTIM56495.2023.10104743" target="_blank">https://doi.org/10.1109/SICTIM56495.2023.10104743</a>
+        <small style="color: #555; display: block; margin-top: 2px;">Published: March 2023 | Indexing: Scopus</small>
+    </li>
+    <li>
+        Harnal, S., Sharma, G., Khurana, S., Mishra, A. M., & Kaur, P. (2022). An Efficient Human Face Detection Technique Based on CNN with SVM Classifier.
+        In <em>International Conference on Data Analytics and Computing</em> (pp. 51-62). Singapore: Springer Nature Singapore.
+        <a href="https://doi.org/10.1007/978-981-99-3432-4_5" target="_blank">https://doi.org/10.1007/978-981-99-3432-4_5</a>
+        <small style="color: #555; display: block; margin-top: 2px;">Published: May 2022 | Indexing: Scopus</small>
+    </li>
+    <li>
+        Lilhore, U. K., Simaiya, S., Manhar, A., Harnal, S., Ghosh, P., & Garg, A. (2022). Precise Forecasting of Stock Market Pricing Using Weighted Ensemble Machine Learning Method.
+        In <em>Data, Engineering and Applications</em> (pp. 637-647). Springer, Singapore.
+        <a href="https://doi.org/10.1007/978-981-19-4687-5_49" target="_blank">https://doi.org/10.1007/978-981-19-4687-5_49</a>
+        <small style="color: #555; display: block; margin-top: 2px;">Indexing: Scopus</small>
+    </li>
+    <li>
+        Harnal, S., Sharma, G., & Mishra, R. D. (2022). QoS‑Based Load Balancing in Fog Computing.
+        In <em>Mobile Radio Communications and 5G Networks</em> (pp. 331-344). Springer, Singapore.
+        <a href="https://doi.org/10.1007/978-981-16-7018-3_25" target="_blank">https://doi.org/10.1007/978-981-16-7018-3_25</a>
+        <small style="color: #555; display: block; margin-top: 2px;">Indexing: Scopus</small>
+    </li>
+    <li>
+        Harnal, S., & Chauhan, R. K. (2018). Comparison for Confidential Cryptography in Multimedia Cloud Environment.
+        In <em>2018 Fifth International Conference on Parallel, Distributed and Grid Computing (PDGC)</em> (pp. 148-152). IEEE.
+        <a href="https://doi.org/10.1109/PDGC.2018.8745909" target="_blank">https://doi.org/10.1109/PDGC.2018.8745909</a>
+        <small style="color: #555; display: block; margin-top: 2px;">Published: December 2018 | Indexing: Scopus</small>
+    </li>
+    <li>
+        Harnal, S., & Chauhan, R. K. (2016). Multimedia support from cloud computing: A review.
+        In <em>2016 International Conference on Microelectronics, Computing and Communications (MicroCom)</em> (pp. 1-6). IEEE.
+        <a href="https://doi.org/10.1109/MicroCom.2016.7522440" target="_blank">https://doi.org/10.1109/MicroCom.2016.7522440</a>
+        <small style="color: #555; display: block; margin-top: 2px;">Published: January 2016 | Indexing: Scopus</small>
+    </li>
+    <li>
+        Presented Paper “Cloud Computing for Education”, in IUCEE, National Faculty Conclave, JMIT, pp. 24–25, 3 July, 2017.
+    </li>
+    <li>
+        Published Paper “Single Sign-On Authentication Model for Cloud Computing Using Kerberos”, 6th International Conference on Advanced Computing & Communication Technologies (ICACCT-2012), 3 November, 2012 (IEEE Computer Society Sponsored).
+    </li>
+    <li>
+        Presented Paper “Authentication Model for Cloud Computing Using Kerberos”, National Conference on Emerging Trends in Computer and Information Technology (NCETCIT-2012), 12 May, 2012 (AICTE Sponsored).
+    </li>
+    <li>
+        Published Paper “From Arpanet to Social Net: Social Networking Sites – Boon or Bane”, October 2011.
+    </li>
+</ul>
+               </div>
+            </div>
+        </div>
+
+        <!-- BOOKS & CHAPTERS -->
+         <div class="accordion-item">
+            <button class="accordion-header">
+                <span class="accordion-title"><i class="fa-solid fa-book"></i>Books, Book Chapters & E‑Book (14)</span>
+                <i class="fa-solid fa-chevron-down accordion-icon"></i>
+            </button>
+            <div class="accordion-content">
+                <div class="inner-content">
+                    
+<ul>
+    <li>
+        Gill, R., Hooda, S., Srivastava, D., & Harnal, S. (Eds.). (2025).
+        <em>Handbook of Intelligent Automation Systems Using Computer Vision and Artificial Intelligence</em>. Wiley.
+        <a href="https://www.wiley.com/en-ie/Handbook+of+Intelligent+Automation+Systems+Using+Computer+Vision+and+Artificial+Intelligence-p-9781394302680" target="_blank">
+            https://www.wiley.com/en-ie/Handbook+of+Intelligent+Automation+Systems+Using+Computer+Vision+and+Artificial+Intelligence-p-9781394302680
+        </a>
+        <small style="color: #555; display: block; margin-top: 2px;">Published: 2025 | Status: Edited and published | Indexing: Scopus | ISBN: 978-1-394-30268-0</small>
+    </li>
+    <li>
+        Harnal, S., Tiwari, R., Garg, L., & Mathur, A. (Eds.). (2024).
+        <em>Cloud and Fog Optimization-based Solutions for Sustainable Developments</em> (1st ed.). CRC Press, Taylor & Francis.
+        <a href="https://doi.org/10.1201/9781003494430" target="_blank">
+            https://doi.org/10.1201/9781003494430
+        </a>
+        <small style="color: #555; display: block; margin-top: 2px;">Published: 24 December, 2024 | Status: Edited and published | Indexing: Scopus | eBook ISBN: 9781003494430</small>
+    </li>
+
+    <li>
+        Pratibha, Sharma, B., Bharti, S., Hooda, S., & Harnal, S. (2025).
+        Transforming the Evaluation: The Crucial Role of Natural Language Processing in Intelligent Automation System.
+        In <em>Handbook of Intelligent Automation Systems Using Computer Vision and Artificial Intelligence</em> (pp. 389–406). Wiley.
+        <a href="https://doi.org/10.1002/9781394302734.ch17" target="_blank">
+            https://doi.org/10.1002/9781394302734.ch17
+        </a>
+        <small style="color: #555; display: block; margin-top: 2px;">Published: 25 July, 2025 | Indexing: Scopus</small>
+    </li>
+    <li>
+        Malik, S., Kaur, G., Harnal, S., & Gautam, V. (2024).
+        Fog computing for sustainable smart cities.
+        In <em>Cloud and Fog Optimization-based Solutions for Sustainable Developments</em> (p. 145). CRC Press.
+        <small style="color: #555; display: block; margin-top: 2px;">Published: 2024 | Indexing: Scopus</small>
+    </li>
+    <li>
+        Kaur, G., Harnal, S., Goyal, A., Tiwari, R., & Cheng, X. (2024).
+        Applications and challenges for sustainable development with cloud/fog/edge computing.
+        In <em>Cloud and Fog Optimization-based Solutions for Sustainable Developments</em> (pp. 27–47). CRC Press.
+        <small style="color: #555; display: block; margin-top: 2px;">Published: 2024 | Indexing: Scopus</small>
+    </li>
+    <li>
+        Goel, G., Tiwari, R., Murugesan, R. K., Harnal, S., & Saxena, S. (2024).
+        Smart grid infrastructure with cloud/fog computing for sustainable development.
+        In <em>Cloud and Fog Optimization-based Solutions for Sustainable Developments</em> (pp. 77–97). CRC Press.
+        <small style="color: #555; display: block; margin-top: 2px;">Published: 2024 | Indexing: Scopus</small>
+    </li>
+    <li>
+        Kaur, H., Harnal, S., Baggan, V., & Tiwari, R. (2024).
+        Resource management solutions for IoT devices in fog computing architecture.
+        In <em>Cloud and Fog Optimization-based Solutions for Sustainable Developments</em> (pp. 1–26). CRC Press.
+        <small style="color: #555; display: block; margin-top: 2px;">Published: 2024 | Indexing: Scopus</small>
+    </li>
+    <li>
+        Goel, G., Tiwari, R., Kumar, M., & Harnal, S. (2024).
+        Energy-efficient framework for cloud–fog environment for sustainable development.
+        In <em>Cloud and Fog Optimization-based Solutions for Sustainable Developments</em> (pp. 299–322). CRC Press.
+        <small style="color: #555; display: block; margin-top: 2px;">Published: 2024 | Indexing: Scopus</small>
+    </li>
+    <li>
+        Bala, R., & Harnal, S. (2024).
+        Transforming Business Education in India: Harnessing the Power of AI Tools for Future Success.
+        In <em>Integrating Cutting-Edge Technology Into the Classroom</em> (pp. 337–346). IGI Global.
+        <a href="https://doi.org/10.4018/979-8-3693-3124-8.ch016" target="_blank">
+            https://doi.org/10.4018/979-8-3693-3124-8.ch016
+        </a>
+        <small style="color: #555; display: block; margin-top: 2px;">Published: 2024 | Indexing: Scopus</small>
+    </li>
+    <li>
+        Harnal, S., Sharma, G., Malik, S., Kaur, G., Simaiya, S., Khurana, S., & Bagga, D. (2023).
+        Current and Future Trends of Cloud-based Solutions for Healthcare.
+        In <em>Image Based Computing for Food and Health Analytics: Requirements, Challenges, Solutions and Practices (IBCFHA)</em> (pp. 115–136). Springer.
+        <a href="https://doi.org/10.1007/978-3-031-22959-6_7" target="_blank">
+            https://doi.org/10.1007/978-3-031-22959-6_7
+        </a>
+        <small style="color: #555; display: block; margin-top: 2px;">Published: 2023 | Indexing: Scopus</small>
+    </li>
+    <li>
+        Kaur, G., Kaur, I., Harnal, S., & Malik, S. (2023).
+        Factors and Techniques for Software Quality Assurance in Agile Software Development.
+        In <em>Agile Software Development: Trends, Challenges and Applications</em> (pp. 257–272). Wiley.
+        <a href="https://doi.org/10.1002/9781119896838.ch13" target="_blank">
+            https://doi.org/10.1002/9781119896838.ch13
+        </a>
+        <small style="color: #555; display: block; margin-top: 2px;">Published: 2023 | Indexing: Scopus</small>
+    </li>
+    <li>
+        Harnal, S., Sharma, G., Seth, N., & Dutt, R. (2022).
+        Load Balancing in Fog Computing using QoS.
+        In <em>Energy Conservation Solutions for Fog-Edge Computing Paradigms</em>. Springer, Singapore.
+        <a href="https://doi.org/10.1007/978-981-16-3448-2_8" target="_blank">
+            https://doi.org/10.1007/978-981-16-3448-2_8
+        </a>
+        <small style="color: #555; display: block; margin-top: 2px;">Published: 2022 | Indexing: Scopus</small>
+    </li>
+    <li>
+        Sharma, G., Harnal, S., Miglani, N., & Khurana, S. (2021).
+        Reliability in Underwater Wireless Sensor Networks.
+        In <em>Energy-Efficient Underwater Wireless Communications and Networking</em>, Wireless Personal Communications (pp. 224–246). IGI Global.
+        <a href="https://doi.org/10.4018/978-1-7998-3640-7.ch015" target="_blank">
+            https://doi.org/10.4018/978-1-7998-3640-7.ch015
+        </a>
+        <small style="color: #555; display: block; margin-top: 2px;">Published: 2021</small>
+    </li>
+
+    <li>
+        Harnal, S. (2020).
+        <em>Introduction to IOT</em>. E‑book published on Google Play Books.
+        <small style="color: #555; display: block; margin-top: 2px;">Published: June 2020</small>
+    </li>
+</ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- PATENTS -->
+         <div class="accordion-item">
+            <button class="accordion-header">
+                <span class="accordion-title"><i class="fa-solid fa-lightbulb"></i>Patents Filed & Granted (24)</span>
+                <i class="fa-solid fa-chevron-down accordion-icon"></i>
+            </button>
+            <div class="accordion-content">
+                <div class="inner-content">
+                    <p>24 patents across utility and design classifications in smart agriculture, healthcare, IoT, and cloud-linked devices. </p>
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Type</th>
+				    <th>Application No.</th>
+                                    <th>Status</th>
+                                    <th>Year</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Antitheft voice based driver assistance system and method thereof</td><td>Utility</td><td>202111046991</td><td>Published</td><td>2023</td></tr>
+<tr><td>Power saving system for operating machine and method thereof</td><td>Utility</td><td>202111049806</td><td>Published</td><td>2023</td></tr>
+<tr><td>Parcel delivery system using unmanned aerial vehicle and method thereof</td><td>Utility</td><td>202111051349</td><td>Published</td><td>2023</td></tr>
+<tr><td>Cutlery holder</td><td>Design</td><td>352925-001</td><td>Granted</td><td>2022</td></tr>
+<tr><td>Wheel chair mobility system for handicapped humans</td><td>Utility</td><td>202111053353</td><td>Published</td><td>2023</td></tr>
+<tr><td>Automated fire detection and controlling system</td><td>Utility</td><td>202111054284</td><td>Published</td><td>2023</td></tr>
+<tr><td>Gas leakage detection system and method thereof</td><td>Utility</td><td>202111056562</td><td>Published</td><td>2023</td></tr>
+<tr><td>System and method for automatic detection of defects in manufacturing product</td><td>Utility</td><td>202111061882</td><td>Published</td><td>2023</td></tr>
+<tr><td>Portable movable dispenser</td><td>Design</td><td>356252-001</td><td>Granted</td><td>2023</td></tr>
+<tr><td>Satellite based natural calamity prediction system facilitating insurance policy assessment</td><td>Utility</td><td>202211004983</td><td>Published</td><td>2022</td></tr>
+<tr><td>Pest detection and repelling system</td><td>Utility</td><td>202211014828</td><td>Published</td><td>2022</td></tr>
+<tr><td>Multipurpose table with cooling and heating system</td><td>Design</td><td>361335-001</td><td>Granted</td><td>2023</td></tr>
+<tr><td>Voice-operated wall-mounted accessories organizer</td><td>Design</td><td>362866-001</td><td>Granted</td><td>2023</td></tr>
+<tr><td>Lid for containers</td><td>Design</td><td>366150-001</td><td>Granted</td><td>2023</td></tr>
+<tr><td>Thermostat container for accommodating insulin and water</td><td>Utility</td><td>202211048593</td><td>Published</td><td>2023</td></tr>
+<tr><td>Device for spraying a fluid</td><td>Utility</td><td>202211058362</td><td>Published</td><td>2023</td></tr>
+<tr><td>Eco-friendly and solar-powered portable headphones with an umbrella</td><td>Design</td><td>372649-001</td><td>Granted</td><td>2024</td></tr>
+<tr><td>Bottle with vertically attached detachable speaker</td><td>Design</td><td>379919-001</td><td>Granted</td><td>2024</td></tr>
+<tr><td>Multipurpose desk organizer</td><td>Design</td><td>380093-001</td><td>Granted</td><td>2023</td></tr>
+<tr><td>Self-sanitizing toilet seat</td><td>Utility</td><td>202311050766</td><td>Published</td><td>2023</td></tr>
+<tr><td>Vehicle to vehicle communication system and method thereof</td><td>Utility</td><td>202311060784</td><td>Published</td><td>2023</td></tr>
+<tr><td>Acupressure kits with customisable acupressure levels</td><td>Design</td><td>411493-001</td><td>Granted</td><td>2024</td></tr>
+<tr><td>Device for teacher student interaction</td><td>Design</td><td>439030-001</td><td>Granted</td><td>2025</td></tr>
+<tr><td>Blockchain based medical data storage cloud device</td><td>Design</td><td>450098-001</td><td>Granted</td><td>2025</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="sub-section-title">Copyright</div>
+                    <ul>
+                        <li>Copyright
+                            “QR CODE IN EDUCATION” registered 06/01/2023 (Reg. No. L-120456/2023). 
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- CERTIFICATIONS & COURSES -->
+         <div class="accordion-item">
+            <button class="accordion-header">
+                <span class="accordion-title"><i class="fa-solid fa-certificate"></i>Certifications & Structured Courses</span>
+                <i class="fa-solid fa-chevron-down accordion-icon"></i>
+            </button>
+            <div class="accordion-content">
+                <div class="inner-content">
+                    <div class="sub-section-title">Certifications & Trainings</div>
+                    <ul>
+                        <li>Industrial Training from EPAM on DevOps (3 months, 16/05/2022 – 12/08/2022). </li>
+                        <li>Wipro Faculty Training – Java Full Stack (07/12/2022 – 23/12/2022). </li>
+                        <li>Wipro Certification – Project Based Learning in Java Full Stack (30/12/2023). </li>
+                        <li>Artificial Intelligence Primer – Infosys Springboard (12/11/2022 – 03/06/2023). </li>
+                        <li>Digital Marketing Strategy – Harvard Business School Online (10/11/2025 – 22/01/2026). </li>
+                    </ul>
+
+                    <div class="sub-section-title">Courses</div>
+                    <ul>
+    <li>
+        <strong>Coursera:</strong>
+        <ul>
+            <li>Cryptography (Completed: 20/02/2020)</li>
+            <li>GCP Fundamentals: Core Infrastructure (Completed: 19/04/2020)</li>
+            <li>Data Structures and Algorithms (Completed: 06/05/2020)</li>
+            <li>Programming for Everybody (Python) (Completed: 18/05/2020)</li>
+            <li>AWS Fundamentals: Going Cloud-Native (Completed: 20/05/2020)</li>
+        </ul>
+    </li>
+    <li>
+        <strong>LinkedIn:</strong>
+        <ul>
+            <li>DevOps Foundations (Completed: 25/07/2022)</li>
+            <li>Learning Bash Scripting (Completed: 03/06/2022)</li>
+            <li>NoSQL Essential Training (Completed: 20/05/2022)</li>
+            <li>Cisco Networking Foundations (Completed: 22/05/2022)</li>
+            <li>Learning NGINX (Completed: 01/06/2022)</li>
+        </ul>
+    </li>
+    <li>
+        <strong>ACloudGuru:</strong>
+        <ul>
+            <li>Kubernetes Essentials (Completed: 18/07/2022)</li>
+            <li>Network Routing Fundamentals (Completed: 19/05/2022)</li>
+            <li>Subnetting Fundamentals (Completed: 20/05/2022)</li>
+            <li>Introduction to Cloud Computing (Completed: 07/06/2022)</li>
+            <li>AWS Certified SysOps Administrator (Completed: 27/06/2022)</li>
+        </ul>
+    </li>
+    <li>
+        <strong>Infosys Springboard:</strong>
+        <ul>
+            <li>Introduction to Data Science (Completed: 12/11/2022)</li>
+            <li>Introduction to Natural Language Processing (Completed: 15/11/2022)</li>
+            <li>Introduction to Deep Learning (Completed: 16/11/2022)</li>
+            <li>Introduction to Robotic Process Automation (Completed: 17/11/2022)</li>
+            <li>Introduction to Artificial Intelligence (Completed: 18/11/2022)</li>
+            <li>Computer Vision 101 (Completed: 18/11/2022)</li>
+        </ul>
+    </li>
+    <li>
+        <strong>DataCamp:</strong>
+        <ul>
+            <li>Introduction to Python (Completed: 05/10/2023)</li>
+            <li>Intermediate Python (Completed: 11/10/2023)</li>
+            <li>Data Manipulation with pandas (Completed: 01/11/2023)</li>
+        </ul>
+    </li>
+    <li>
+        <strong>Other Coursera & Workshops:</strong>
+        <ul>
+            <li>What is the Metaverse? (Coursera - Completed: 01/12/2023)</li>
+            <li>Fake News Detection with Machine Learning (Coursera - Completed: 01/12/2023)</li>
+            <li>Introduction to Machine Learning (Coursera - Completed: 05/12/2023)</li>
+            <li>Agile Methodologies for Object Oriented Software Engineering (Coursera - Completed: 16/05/2024)</li>
+            <li>Power BI Beginner to Pro Workshop (Pragmatic works - Completed: 11/01/2025)</li>
+            <li>AWS Cloud Practitioner Essentials (Coursera - Completed: 15/12/2025)</li>
+        </ul>
+    </li>
+</ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- MEMBERSHIPS & SERVICE -->
+         <div class="accordion-item">
+            <button class="accordion-header">
+                <span class="accordion-title"><i class="fa-solid fa-users"></i>Memberships & Professional Service</span>
+                <i class="fa-solid fa-chevron-down accordion-icon"></i>
+            </button>
+            <div class="accordion-content">
+                <div class="inner-content">
+                    <div class="sub-section-title">Memberships</div>
+                    <ul>
+                        <li>IEEE Computer Society – Membership ID: 92045901. </li>
+                        <li>Engineers Australia – EA ID: 11352626. </li>
+                        <li>Computer Science Teachers Association (CSTA) – Member No: 198358043010. </li>
+                        <li>International Association of Engineers (IAENG) – Member No: 502996. </li>
+                        <li>World Research Union – Member ID: WRU001123. </li>
+                    </ul>
+
+                    <div class="sub-section-title">Reviewer & Session Chair</div>
+                    <ul>
+                        <li>Reviewer in NGCT‑2018, ESCI‑2024, ICCICA‑2024, InCACCT‑2025, WcCST‑2026 and multiple IEEE/Scopus conferences. </li>
+                        <li>Reviewer for EAI Endorsed Transactions on Scalable Information Systems. </li>
+                        <li>Reviewer for Bentham Science book “Next-Gen Healthcare: The Role of Deep Learning and ML in Medical Advancements”. </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- SESSIONS, WORKSHOPS, SYMPOSIA CONDUCTED -->
+         <div class="accordion-item">
+            <button class="accordion-header">
+                <span class="accordion-title"><i class="fa-solid fa-chalkboard-teacher"></i>Sessions, Workshops & Symposiums Conducted</span>
+                <i class="fa-solid fa-chevron-down accordion-icon"></i>
+            </button>
+            <div class="accordion-content">
+                <div class="inner-content">
+                    <ul>
+    <li>
+        <strong>Faculty Development Programs (FDPs) & Institutional Organizing:</strong>
+        <ul>
+            <li>FDP on “Unified Modeling Language” at JMIT, Radaur (Conducted: 26/10/2016)</li>
+            <li>FDP on “Digital Inspiration” at JMIT, Radaur (Conducted: 19/06/2017)</li>
+            <li>FDP on “Internet Security & Digitization” at JMIT, Radaur (Conducted: 28/06/2017)</li>
+            <li>FDP on “Javascript” at JMIT, Radaur (Conducted: 27/06/2020)</li>
+            <li>National Webinar on “Business Intelligence” from DCSE, CUIET (Organized: 06/03/2021)</li>
+            <li>5-Day FDP on “Emerging Domains in Internet of Things” by DCSE, CUIET (Organized & Served as Resource Person: 21–25 March, 2022)</li>
+            <li>2-Days International Symposium on “Advancing Automation, Decision Making and Sustainable Innovation with Artificial Intelligence and Computer Vision” by Dept. of CSE, CUIET, Chitkara University, Punjab (Organized: 19/04/2024 – 20/04/2024)</li>
+            <li>Online FDP on “Elevate Your Innovation - A Practical Guide to AWS Services” for JMIT, Radaur (Conducted: 20/05/2024)</li>
+            <li>Online FDP on “Efficient Cloud Infrastructure Management with Containers and Kubernetes” for JMIT, Radaur (Conducted: 22/03/2025)</li>
+            <li>Online FDP on “Cloud Computing Unleashed: Practical Applications in the Modern World” for JMIT, Radaur (Conducted: 28/07/2025)</li>
+        </ul>
+    </li>
+
+    <li>
+        <strong>Academic Seminars & Guest Lectures:</strong>
+        <ul>
+            <li>Student Seminar on “Pumping Lemma” at JMIETI, Radaur (Conducted: 16/11/2016)</li>
+            <li>Faculty Seminar on “Digital Inspiration” for School and SJPP, Damla Faculty (Conducted: 31/08/2017)</li>
+            <li>Student Seminar on “Javascript” at SJPP, Damla (Conducted: 22/02/2018)</li>
+            <li>Student Seminar on “Parsing” at JMIT, Radaur (Conducted: 26/02/2018)</li>
+            <li>Student Seminar on “Python” at SJPP, Damla (Conducted: 24/08/2018)</li>
+            <li>Student Seminar on “Javascript” at SJPP, Damla (Conducted: 27/02/2020)</li>
+            <li>Research Connect Talk Series session on “Serverless Computing” for students and faculties, Department of CSE, Chandigarh University, Mohali (Conducted: 16/10/2024)</li>
+        </ul>
+    </li>
+
+    <li>
+        <strong>Corporate & Professional Training Sessions:</strong>
+        <ul>
+            <li>20-Hours Weekend Corporate Training on “Python 3 Basics” conducted for 20 employees of ISGEC, Yamuna Nagar (Conducted: 05/09/2020 – 26/09/2020)</li>
+        </ul>
+    </li>
+
+    <li>
+        <strong>Targeted Technical Workshops & Specialized Sessions Organized:</strong>
+        <ul>
+            <li>Student Workshop: “Enhancing your critical thinking abilities with new age programming” by Mr. Pranay Kumar Das, Cantilever (Organized: 17/01/2023)</li>
+            <li>Student Workshop: “Exploring Innovative way to extend the Lifeline of IPv4 addresses through Subnetting” by Dr. Vidhu Baggan, Chitkara University (Organized: 21/04/2023)</li>
+            <li>Special Session: “Critical Thinking for Managing risk in software engineering” (Organized: 26/04/2023)</li>
+            <li>Special Session: “Innovative tools for software project planning” (Organized: 27/04/2023)</li>
+            <li>Special Session: “Innovative Project Planning and Scheduling Tools” (Organized: 04/05/2023)</li>
+            <li>Special Session: “Critical Thinking for Project Management with CPM/PERT” (Organized: 04/05/2023)</li>
+            <li>Hands-on Workshop: “OVERLEAF for Scientific Research paper writing” (Organized: 11/09/2023)</li>
+            <li>Special Session: “Innovative Technology: Reshaping the Landscape of Learning” (Organized: 11/09/2023)</li>
+            <li>Hands-on Workshop: “Innovative Python GUI Programming with Tkinter” (Organized: 19/12/2023)</li>
+            <li>Special Session: “Innovative way to demystify the TOEFL & GRE” (Organized: 16/01/2024)</li>
+            <li>Technical Workshop: “Developing Innovative Serverless Generative AI applications using Amazon Bedrock” (Organized: 24/04/2024)</li>
+            <li>Special Session: “Exploring UCA - Innovative Approach to Critical Thinking & Problem Solving” (Organized: 16/05/2024)</li>
+        </ul>
+    </li>
+</ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- FDPs / WORKSHOPS ATTENDED -->
+         <div class="accordion-item">
+            <button class="accordion-header">
+                <span class="accordion-title"><i class="fa-solid fa-person-chalkboard"></i>FDPs, STTPs & Workshops Attended</span>
+                <i class="fa-solid fa-chevron-down accordion-icon"></i>
+            </button>
+            <div class="accordion-content">
+                <div class="inner-content">
+                    <ul>
+    <li>
+        <strong>NITTTR & Early Career Development Programs (STCs & Workshops):</strong>
+        <ul>
+            <li>5-Days Online STC on “Communication Skills” via ICT by NITTTR Chandigarh at JMIT Radaur (20–24 April, 2014)</li>
+            <li>One-Day Workshop on “Bluemix” by IBM at Geeta Institute (09 Dec, 2014)</li>
+            <li>Workshop on “Personality Development” by Mr. Tarun Garg (18/05/2015)</li>
+            <li>Workshop on “Utilization of MATLAB (Fuzzy Tool Box)” at ECE Dept., JMIT (19/05/2015)</li>
+            <li>Teacher’s Training Workshop on “Communication Skills” by Dept. of Humanities & Social Sciences, JMIT, Radaur (02–05 Dec, 2015)</li>
+            <li>Short Term Training Program on “MATLAB” in association with NITTTR, Chandigarh (18–21 July, 2017)</li>
+            <li>One-Week Short Term Training Program on “MATLAB & LABVIEW” in association with NITTTR, Chandigarh at JMIT, Radaur (29/01/2018 – 02/02/2018)</li>
+            <li>One-Week Short Term Training Program on “Modeling and Simulation using MATLAB” in association with NITTTR, Chandigarh at JMIT, Radaur (21–25 May, 2018)</li>
+            <li>Short Term Training Program on “Patents and Copyrights” in association with NITTTR, Chandigarh (10–14 June, 2019)</li>
+            <li>National Seminar on “Recent Advancement in Nanotechnology” at JMIETI, Radaur</li>
+        </ul>
+    </li>
+
+    <li>
+        <strong>Core Computing, Data Science & Tech Network FDPs (2016–2021):</strong>
+        <ul>
+            <li>FDP on “Cloud & Networking” at DCRUST, Murthal (31 May – 03 June, 2016)</li>
+            <li>Online FDP on “Blockchain Technology” by EICT Academy, IIT Roorkee (21–28 April, 2020)</li>
+            <li>Online FDP on “Advances in Computational Intelligence & Machine Learning Application” by IT Dept., Amity University, UP (04–08 May, 2020)</li>
+            <li>FDP on “Data Science using R” by CSE Dept., NITTTR, Chandigarh (11–15 May, 2020)</li>
+            <li>FDP on “Data Analytics using Python” by CSE Dept., NITTTR, Chandigarh (18–22 May, 2020)</li>
+            <li>1-Week Online FDP on “Recent Trends in Computational Technologies” by Ashoka Institute of Technology & Management, Malkapur (13–18 July, 2020)</li>
+            <li>1-Week Online FDP on “Python” by E & ICT Academy, IIT Kanpur (14–19 Dec, 2020)</li>
+            <li>5-Days FDP on “5 ways to unlock research grant” by DCSE, Chitkara University (17–21 May, 2021)</li>
+            <li>FDP on “Website development using Wordpress” organized by IIT Kanpur (14–19 June, 2021)</li>
+        </ul>
+    </li>
+
+    <li>
+        <strong>Advanced Technical & Institutional FDPs (2022–2024):</strong>
+        <ul>
+            <li>7-Days FDP on “Quantum Computing: Next Era of Computing Technology” by Aryans College of Engineering, Rajpura (15–21 Feb, 2022)</li>
+            <li>5-Days FDP on “Contemporary and Futuristic Applications of Applied Artificial Intelligence” by CUIET, Chitkara University (21–25 Feb, 2022)</li>
+            <li>5-Days FDP on “Emerging Domains in Internet of Things” by DCSE, CUIET, Chitkara University (21–25 March, 2022)</li>
+            <li>5-Days Faculty Enablement Program on “Artificial Intelligence” by A Campus Connect Initiative, Infosys (14–18 Nov, 2022)</li>
+            <li>FDP on “Adoption of NEP modules in Academic Curriculum” at CUIET, Chitkara University (30 Nov – 01 Dec, 2022)</li>
+            <li>5-Days FDP on “Application of Artificial Intelligence (AI) in traditional engineering practices” by Dept. of Civil Engineering, Chitkara University (05–09 June, 2023)</li>
+            <li>6-Days FDP on “Paradigm Shift in Technical Education” by Dept. of CSE, G.C.R.G Group of Institutions (Joint initiative of IIT Kanpur and ICSS, Lucknow) (21–26 Aug, 2023)</li>
+            <li>5-Days STTP on “Data Science for Business” by Dept. of AI&DS, VIIT, Pune (04–08 Sept, 2023)</li>
+            <li>6-Days Offline FDP on “Recent Advances and Future Trends in AI, Computer Vision & NLP” by EICT Academy, IIT Roorkee (30 Oct – 04 Nov, 2023)</li>
+            <li>2-Months Hybrid FDP on “Empowerment with Enhanced Coding Expertise through Code Quality” by Career Advancement Services, Chitkara University in collaboration with LitCoder (09/11/2023 – 06/01/2024)</li>
+            <li>5-Days Advanced Technology Program (ATP) training on “Cloud Computing” organized by Wipro (29 Jan – 02 Feb, 2024)</li>
+            <li>3-Days Offline FDP on “Introduction to Immersive Experience” by Dept. of Computer Applications, Chitkara University (21–23 May, 2024)</li>
+            <li>5-Days Offline FDP on “Revolutionizing Web Interfaces: Exploring Front End Development Innovations” by Dept. of CSE, Chitkara University (03–07 June, 2024)</li>
+            <li>5-Days FDP on “Exploring Emerging Frontiers in Generative AI and Quantum Computing” by Dept. of CSE, IEM Kolkata (23–27 Sept, 2024)</li>
+        </ul>
+    </li>
+
+    <li>
+        <strong>Emerging Domains: Agentic AI, GenAI & High-Performance Computing (Late 2024–2026):</strong>
+        <ul>
+            <li>One Week FDP on “Artificial Intelligence Innovations in Health Sciences: A hands-on Approach” by Dept. of CSE (Post Graduation), Chandigarh University, Mohali (09–13 Dec, 2024)</li>
+            <li>6-Days AICTE Training And Learning (ATAL) Academy FDP on “The future of Quantum computing and High-performance computing (HPC)” by P.S.V. College of Engineering and Technology (23–28 Dec, 2024)</li>
+            <li>5-Days Course on “Machine Learning using Python” organized by NIELIT, NIT Campus, Calicut, Kerala (10–14 Jan, 2025)</li>
+            <li>FDP on “Explainable, Genetic & Agentic AI for Health Care: A Hands-on Experience” by Dept. of CSE, Chandigarh University, Mohali (12–17 Dec, 2025)</li>
+            <li>5-Days International FDP on “Impact and Influence of AI in the Age of Generative and Agentic AI” by Dept. of Computer Science, Sister Nivedita University (02–06 Feb, 2026)</li>
+        </ul>
+    </li>
+
+    <li>
+        <strong>Industrial Seminars, Short Workshops & Safety Certifications:</strong>
+        <ul>
+            <li>Webinar on “COVID-19 Challenges and Opportunities” at JMIT, Radaur (29 May, 2020)</li>
+            <li>Webinar on “Artificial Intelligence” at JMIT, Radaur (11 June, 2020)</li>
+            <li>Webinar on “Business Intelligence” at DCSE, Chitkara University, Punjab (06 March, 2021)</li>
+            <li>Webinar on “Applications of Data Analytics” by DCSE, Chitkara University (05 June, 2021)</li>
+            <li>Webinar on “The fascinating world of Artificial Intelligence” by IEEE, MRU (26 July, 2021)</li>
+            <li>Industrial Visit session on “Digital platform (Infosys springboard)” by Infosys Team, Infosys Limited, Chandigarh (04 Nov, 2022)</li>
+            <li>One-Day Workshop on “Adobe Express Fundamentals” at CUIET, Chitkara University (29 April, 2023)</li>
+            <li>Online Quiz Certification on “Cyber Safety Challenges and its Security” under the Stay Safe Online Campaign by MeitY, Government of India (07/08/2023)</li>
+            <li>1-Day Teacher In-Service Program (TISP) on “Application of IoT in Industrial Automation” by IEEE Delhi Chapter and Poornima College of Engineering, Jaipur (07 Oct, 2023)</li>
+        </ul>
+    </li>
+</ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- CONFERENCES ATTENDED -->
+         <div class="accordion-item">
+            <button class="accordion-header">
+                <span class="accordion-title"><i class="fa-solid fa-globe"></i>Conferences Attended</span>
+                <i class="fa-solid fa-chevron-down accordion-icon"></i>
+            </button>
+            <div class="accordion-content">
+                <div class="inner-content">
+                    <ul>
+    <li>
+        <strong>National Conferences:</strong>
+        <ul>
+            <li>National Conference on Emerging Trends in Computer and Information Technology (NCETCIT-2012) <small style="color: #555;">(AICTE Sponsored | 12 May, 2012)</small></li>
+            <li>National Conference on Futuristic Trends in Computing, Communication and Information System (FTCCIS-2013)</li>
+        </ul>
+    </li>
+
+    <li>
+        <strong>International Conferences:</strong>
+        <ul>
+            <li>International Conference on Microcom-2016 <small style="color: #555;">(IEEE | 23–25 Jan, 2016)</small></li>
+            <li>7th International Conference on Computing, Communication, Control And Automation (ICCUBEA) <small style="color: #555;">(IEEE)</small></li>
+            <li>International Conference on Mobile Radio Communications & 5G Networks (MRCN-2021)</li>
+            <li>1st International Conference on Sustainability, Innovation & Technology <small style="color: #555;">(Organized by Symbiosis Institute of Technology, Nagpur, Symbiosis International University | 22–23 August, 2023)</small></li>
+            <li>2nd International Conference on Recent Advances in Computing Sciences (RACS-2023) <small style="color: #555;">(IEEE | 2023)</small></li>
+            <li>13th International Conference on System Modeling & Advancement in Research Trends (SMART-2024) <small style="color: #555;">(Organized by College of Computing Sciences & IT, Teerthanker Mahaveer University, Moradabad, UP, India | 06–07 December, 2024)</small></li>
+            <li>1st International Conference on Smart Technologies and Intelligent Computing (INCSTIC-2025) <small style="color: #555;">(Geeta University, Panipat, Delhi NCR | 17–18 October, 2025)</small></li>
+            <li>International Conference on Computational Science and Technology (WcCST-2026) <small style="color: #555;">(Organized by Department of CSE, Chandigarh University, Punjab, India | Technically Co-Sponsored by IEEE CIS, Record Number-67302 | 26–27 March, 2026)</small></li>
+        </ul>
+    </li>
+</ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- DUTIES, SUBJECTS, PROJECTS, ACHIEVEMENTS -->
+         <div class="accordion-item">
+            <button class="accordion-header">
+                <span class="accordion-title"><i class="fa-solid fa-tasks"></i>Duties, Teaching, Projects & Achievements</span>
+                <i class="fa-solid fa-chevron-down accordion-icon"></i>
+            </button>
+            <div class="accordion-content">
+                <div class="inner-content">
+                    <div class="sub-section-title">Institutional Duties</div>
+                    <ul>
+    <!-- Chandigarh University -->
+    <li>
+        <strong>Chandigarh University (Department of CSE):</strong>
+        <ul>
+            <li>Ph.D. Co-Ordinator, managing doctoral candidate tracking and administrative alignment.</li>
+            <li>Course Catalog Preparation for Board of Studies (BOS) in specialized Cloud Computing curricula.</li>
+            <li>M.Tech Thesis Supervisor and Master Subject Co-Ordinator for post-graduate programs.</li>
+            <li>Facilitator for the Academic Outreach Initiative within M.Tech (CSE).</li>
+        </ul>
+    </li>
+
+    <!-- Chitkara University (CUIET) -->
+    <li>
+        <strong>Chitkara University (CUIET):</strong>
+        <ul>
+            <li>Head of Academic Delivery and Program In-Charge for Computer Science & Engineering (3rd Year).</li>
+            <li>Ph.D. Supervisor and active Core Research Team Member.</li>
+            <li>Event Organizer (Workshops/Expert Talks) under the Center of Excellence (CoE) for Logic Building Skills.</li>
+            <li>Core committee member handling NBA and NAAC tier-1 accreditation compliance documentations.</li>
+        </ul>
+    </li>
+
+    <!-- JMIT, Radaur & Institutional Operations -->
+    <li>
+        <strong>JMIT, Radaur & Institutional Operations:</strong>
+        <ul>
+            <li>Institute In-Charge for the Confederation of Indian Industry (CII) National Survey.</li>
+            <li>Campus Coordinator for the Coursera Campus Commune program integration.</li>
+            <li>Time Table In-Charge and Institutional Sessional Examination Committee Member.</li>
+            <li>Departmental Placement Coordinator, organizing industry visits and Public Relations (PR) network expansions.</li>
+            <li>College Admissions Committee Lead, managing regional school outreach campaigns and visits.</li>
+            <li>Webmaster for institutional website modernization and content management updates.</li>
+            <li>Chief Content Developer for institutional publication collateral (Placement Brochures, Information Booklets, Pamphlets).</li>
+        </ul>
+    </li>
+</ul>
+
+                    <div class="sub-section-title">Subjects Taught</div>
+                    <ul>
+                        <li>AWS Fundamentals, AWS Solution Architect, Cloud Computing. </li>
+                        <li>Fundamentals of Programming in C, OOP using C++, Data Structures, Python. </li>
+                        <li>Network Management & Security, Computer Hardware & Technology. </li>
+                        <li>Theory of Computation, Compiler Design, OO Analysis using UML, OOSE, Design & Analysis of Algorithms. </li>
+                    </ul>
+
+                    <div class="sub-section-title">Projects & Labs</div>
+                    <ul>
+    <li>
+        <strong>Cloud Architecture & Network Simulations:</strong>
+        <ul>
+            <li><strong>Application Deployment with Load Balancer (AWS):</strong> Architected a resilient static web application environment utilizing Amazon Virtual Private Cloud (VPC) and Elastic Load Balancing (ELB).</li>
+            <li><strong>High-Availability Cloud Solutions (AWS):</strong> Configured scalable cloud environments integrating Auto Scaling Groups, Amazon RDS databases, NAT Gateways for secure private subnets, and containerized microservices.</li>
+            <li><strong>Cloud & Fog Computing Infrastructure:</strong> Designed and analyzed distributed computing topologies using CloudSim and FogSim simulators.</li>
+            <li><strong>Network Topology & Routing Protocols:</strong> Modeled static and dynamic routing infrastructures using Cisco Packet Tracer.</li>
+        </ul>
+    </li>
+
+    <li>
+        <strong>Machine Learning & Artificial Intelligence Innovations:</strong>
+        <ul>
+            <li><strong>Federated Learning for Multi-Tenant IoT Edge Networks:</strong> Developed a privacy-preserving AI framework utilizing decentralized CNNs on edge nodes with secure weight aggregation to eliminate raw data exposure in Smart City ecosystems.</li>
+            <li><strong>Serverless Computer Vision Pipeline for Autonomous Agriculture:</strong> Engineered an event-driven, real-time video analytics pipeline using custom deep CNNs to detect crop anomalies, triggered asynchronously via serverless microservices and cloud object storage.</li>
+            <li><strong>Intelligent Network Defense via Encrypted Traffic Profiling:</strong> Implemented a deep learning network monitoring agent leveraging 1D and 2D CNN architectures to classify malicious payloads and routing anomalies directly from encrypted packet flow structures.</li>
+        </ul>
+    </li>
+
+    <li>
+        <strong>Software Engineering & Web Development Projects:</strong>
+        <ul>
+            <li><strong>Job Consultant’s Website (B.Tech Major Project):</strong> Developed a dynamic enterprise portal using Java Server Pages (JSP), HTML5, Bootstrap styling, and a MySQL backend database.</li>
+            <li><strong>Shopping Mall Application (B.Tech Minor Project):</strong> Built a localized retail management desktop application using Java GUI components integrated with a Microsoft Access database.</li>
+            <li><strong>Telephone Directory (B.Tech Training Project):</strong> Implemented a structured database application utilizing Core Java and Microsoft Access connectivity (JDBC).</li>
+            <li><strong>College Institutional Website (Diploma Project):</strong> Designed and built a responsive institutional landing website utilizing semantic HTML and the Bootstrap styling framework.</li>
+        </ul>
+    </li>
+</ul>
+
+                    <div class="sub-section-title">Achievements</div>
+                    <ul>
+    <li>
+        <strong>Academic Honors & Institutional Medals:</strong>
+        <ul>
+            <li><strong>Silver Medalist:</strong> Awarded by the State Board of Technical Education (SBTE), Chandigarh, for ranking among the top tier in the 3-Year Diploma course in Information Technology at SJPP, Damla.</li>
+            <li><strong>University Rank Holder (M.Tech):</strong> Secured 2nd Topper rank in the M.Tech 3rd Semester Examinations at the Department of Computer Science & Applications (D.C.S.A), Kurukshetra University (KU).</li>
+            <li><strong>Department Topper & Award of Excellence (B.Tech):</strong> Achieved Topper position and received the prestigious "Award of Excellence" in the B.Tech 8th Semester Examinations at H.E.C.</li>
+            <li><strong>Academic Distinctions:</strong> Graduated with formal Distinctions in advanced technical core subjects, including Modeling and Simulation, High-Performance Networks, Object-Oriented Programming Systems (OOPS), and Compiler Design.</li>
+        </ul>
+    </li>
+
+    <li>
+        <strong>Professional & Teaching Excellence Awards:</strong>
+        <ul>
+            <li><strong>Star Faculty of the Year:</strong> Honored for outstanding teaching methodologies and academic performance during the CSE Excellence Awards for the 2022–23 academic session at C.U.I.E.T, Chitkara University, Punjab.</li>
+            <li><strong>Star Mentor of the Year:</strong> Recognized for exceptional student mentorship, doctoral/post-graduate guidance, and leadership of the 3rd-year cohort at C.U.I.E.T, Chitkara University, Punjab.</li>
+        </ul>
+    </li>
+
+    <li>
+        <strong>Co-Curricular & Extra-Curricular Milestones:</strong>
+        <ul>
+            <li><strong>Technical Competitions:</strong> Secured top positions in the State-Level IT Quiz ("Techno Bee 2011") and represented the institution at the District-Level Science Exhibition.</li>
+            <li><strong>Institutional Events & Cultural Leadership:</strong> Recognized for foundational organizational contributions and awards in major campus seminars, cultural festivals, and creative events (including choreography, event management, singing, and Rangoli).</li>
+            <li><strong>Sports Achievements:</strong> Maintained active campus engagement with competitive institutional placements in Table Tennis, Darts, and badminton tournaments.</li>
+        </ul>
+    </li>
+</ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2026 Dr. Shilpi Harnal. All Rights Reserved. Built using clean, responsive semantic elements. </p>
+    </footer>
+</div>
+
+<script>
+    const COLLAPSED_OFFSET = 80;
+
+    function setInitialHeights() {
+        document.querySelectorAll('.accordion-item.active').forEach(item => {
+            const content = item.querySelector('.accordion-content');
+            const inner = item.querySelector('.inner-content');
+            if (content && inner) {
+                content.style.maxHeight = Math.min(inner.scrollHeight + COLLAPSED_OFFSET, inner.scrollHeight + 200) + "px";
+            }
+        });
+    }
+
+    document.querySelectorAll('.accordion-header').forEach(header => {
+        header.addEventListener('click', () => {
+            const item = header.parentElement;
+            const content = header.nextElementSibling;
+            const inner = item.querySelector('.inner-content');
+            const isActive = item.classList.contains('active');
+
+            if (isActive) {
+                item.classList.remove('active');
+                content.style.maxHeight = null;
+            } else if (inner) {
+                item.classList.add('active');
+                content.style.maxHeight = inner.scrollHeight + COLLAPSED_OFFSET + "px";
+            }
+        });
+    });
+
+    window.addEventListener('DOMContentLoaded', setInitialHeights);
+    window.addEventListener('resize', setInitialHeights);
+</script>
+
+</body>
+</html>
